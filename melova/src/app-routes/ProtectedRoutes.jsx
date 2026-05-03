@@ -1,7 +1,19 @@
+import Cart from "../pages/Cart";
+import Products from "../pages/Products";
+import Settings from "../pages/Settings";
+
 const ProtectedRoutes = [
   {
-    path: '/',
-    element: <h1>First page</h1>,
+    path: '/products',
+    element: <Products />,
+  },
+  {
+    path: '/cart',
+    element: <Cart />,
+  },
+  {
+    path: '/settings',
+    element: <Settings />,
   },
 ];
 

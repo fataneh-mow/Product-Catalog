@@ -1,7 +1,9 @@
+import Home from "../pages/Home";
+
 const PublicRoutes = [
   {
-    path: '/login',
-    element: <h1>Second page</h1>,
+    path: '/home',
+    element: <Home />,
   },
 ];
 
