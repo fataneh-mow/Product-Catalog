@@ -8,7 +8,9 @@ export default function ViewToggle({ onChange }) {
     const handleChange = (type) => {
         dispatch({ type: "SET_VIEW", payload: type });
     };
+
     const { view } = state;
+    
     return (
         <div
             style={{
