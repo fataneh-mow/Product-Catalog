@@ -7,7 +7,7 @@ export default function AppLayout() {
         <div className="min-h-screen flex flex-col">
             <Header />
 
-            <main className="flex-1">
+            <main className="flex-1 mt-24">
                 <Outlet />
             </main>
 
