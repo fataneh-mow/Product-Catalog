@@ -21,5 +21,10 @@
     "Dark_Mode": "Dark Mode",
     "Light_Mode": "Light Mode",
     "Language": "Language",
-    "Manage_the_app": "Manage Your apllication's prefrences"
+    "Manage_the_app": "Manage Your apllication's prefrences",
+    "Melova_desc": "Melova a shop for your convenience!",
+    "Loading_products": "Loading products...",
+    "SomethingWentWrong": "Something went wrong",
+    "in_stock": "In stock"
+
 }

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { LuLayoutGrid, LuList } from "react-icons/lu";
+import { useProductUI } from "../context/ProductUIContext";
 
 export default function ViewToggle({ onChange }) {
-    const [view, setView] = useState("grid");
+    const { state, dispatch } = useProductUI();
 
     const handleChange = (type) => {
-        setView(type);
-        onChange(type);
+        dispatch({ type: "SET_VIEW", payload: type });
     };
-
+    const { view } = state;
     return (
         <div
             style={{

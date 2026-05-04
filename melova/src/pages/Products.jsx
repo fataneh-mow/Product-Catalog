@@ -3,10 +3,13 @@ import Pagination from "../components/common/Pagination";
 import SearchBox from "../components/common/SearchBox";
 import { useTranslation } from "react-i18next";
 import ViewToggle from "../components/View";
+import { useProducts } from "../hooks/useProducts";
 
 
 export default function Products () {
     const {t} = useTranslation();
+    const { data, isLoading, error } = useProducts();
+
     return (
         <div className="my-4">
             <div>
@@ -38,8 +41,7 @@ export default function Products () {
             </div>
             
             <div>
-                <ProductList></ProductList>
-
+                <ProductList products={data?.products || []} />
             </div>
         </div>
     )
