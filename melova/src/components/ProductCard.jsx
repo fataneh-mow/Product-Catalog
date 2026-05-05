@@ -5,12 +5,14 @@ import { useProductUI } from "../context/ProductUIContext";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/cartSlice";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductCard({ product, onAddToCart, view = "grid" }) {
     const { t } = useTranslation();
     const { state } = useProductUI();
     const isList = state.view === "list";
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleProductAddingToCart = () => {
         try {
@@ -31,26 +33,32 @@ export default function ProductCard({ product, onAddToCart, view = "grid" }) {
             }}
             className={
                 isList
-                    ? "flex gap-4 rounded-xl p-4 shadow-sm hover:shadow-md transition"
-                    : "rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col gap-3"
+                    ? "flex gap-4 rounded-xl p-4 shadow-sm hover:shadow-md transition cursor-pointer"
+                    : "rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col gap-3 cursor-pointer"
             }
+            onClick={() => navigate(`/product/${product.id}`)}
         >
             <div
                 className={
                     isList
-                        ? "w-28 h-28 rounded-lg overflow-hidden flex-shrink-0"
-                        : "w-full h-44 rounded-lg overflow-hidden flex items-center justify-center"
+                        ? "w-28 h-28 rounded-xl overflow-hidden flex-shrink-0 bg-white"
+                        : "w-full h-52 rounded-xl overflow-hidden bg-white"
                 }
-                style={{ backgroundColor: "var(--bgSecondary)" }}
+                style={{
+                    border: "1px solid var(--bgSecondary)",
+                    background: "var(--bgSecondary)"
+                }}
             >
                 {product?.thumbnail ? (
                     <img
                         src={product.thumbnail}
                         alt={product.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain p-2 transition-transform duration-300 hover:scale-105"
                     />
                 ) : (
-                    <span className="text-sm opacity-60">{t("No_Image")}</span>
+                    <div className="w-full h-full flex items-center justify-center text-sm opacity-60">
+                        {t("No_Image")}
+                    </div>
                 )}
             </div>
 

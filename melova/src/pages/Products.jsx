@@ -28,7 +28,7 @@ export default function Products () {
                         color: "var(--textSecondary)"
                     }}
                 >
-                    {("Melova_desc")}
+                    {t("Melova_desc")}
                 </p>
             </div>
             <div>

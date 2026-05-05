@@ -4,7 +4,8 @@ import { CiCirclePlus } from "react-icons/ci";
 import { toLocaleDigits } from "../hooks/numberConvertor";
 import { useSelector, useDispatch } from "react-redux";
 import { increaseQty, decreaseQty, removeFromCart, clearCart  } from "../store/cartSlice";
-import { FaTrash, FaRegTrashAlt } from "react-icons/fa"; // Font Awesome
+import { FaTrash, FaRegTrashAlt } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 export default function Cart() {
     const { t } = useTranslation();
@@ -22,6 +23,10 @@ export default function Cart() {
     const total = subtotal + shipping;
     const flooredTotal = Math.floor(total)
 
+    const totalItems = cartItems.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+    );
 
     return (
         <div
@@ -83,7 +88,10 @@ export default function Cart() {
                                     {/* quantity */}
                                     <div className="flex items-center gap-3">
                                         <button
-                                            onClick={() => dispatch(decreaseQty(item.id))}
+                                            onClick={() => {
+                                                dispatch(decreaseQty(item.id))
+                                                toast.success(t("QuantityDecreased"))
+                                            }}
                                             style={{
                                                 backgroundColor: "var(--bgSecondary)",
                                                 color: "var(--textPrimary)",
@@ -96,7 +104,10 @@ export default function Cart() {
                                         <span>{toLocaleDigits(item.quantity)}</span>
 
                                         <button
-                                            onClick={() => dispatch(increaseQty(item.id))}
+                                            onClick={() => {
+                                                dispatch(increaseQty(item.id))
+                                                toast.success(t("QuantityIncreased"))
+                                            }}
                                             style={{
                                                 backgroundColor: "var(--bgSecondary)",
                                                 color: "var(--textPrimary)",
@@ -114,7 +125,10 @@ export default function Cart() {
                                     
                                     {/* deleting item */}
                                     <button
-                                        onClick={() => dispatch(removeFromCart(item.id))}
+                                        onClick={() => {
+                                            dispatch(removeFromCart(item.id))
+                                            toast.success(t("ItemRemoved"))
+                                        }}
                                         className="text-red-400 text-sm hover:opacity-70 transition"
                                     >
                                         <FaTrash></FaTrash>
@@ -138,6 +152,11 @@ export default function Cart() {
                     </h2>
 
                     <div className="flex justify-between text-sm mb-2">
+                        <span>{t("Items")}</span>
+                        <span>{toLocaleDigits(totalItems)}</span>
+                    </div>
+                    
+                    <div className="flex justify-between text-sm mb-2">
                         <span>{t("Subtotal")}</span>
                         <span>${toLocaleDigits(flooredSubtotal)}</span>
                     </div>
@@ -158,7 +177,10 @@ export default function Cart() {
                     </div>
 
                     <button
-                        onClick={() => dispatch(clearCart())}
+                        onClick={() => {
+                            dispatch(clearCart())
+                            toast.success(t("CartCleared"))
+                        }}
                         style={{
                             backgroundColor: "var(--textPrimary)",
                             color: "var(--bgPrimary)",

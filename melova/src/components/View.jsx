@@ -17,7 +17,7 @@ export default function ViewToggle({ onChange }) {
                 backgroundColor: "var(--bgSecondary)",
                 width: "fit-content",
             }}
-            className="flex rounded-md px-4 py-1.5 items-center justify-between gap-4"
+            className="flex rounded-md px-4 py-1.5 items-center justify-between gap-4 shadow-sm"
         >
             {/* grid */}
             <button

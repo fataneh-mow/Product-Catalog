@@ -6,10 +6,10 @@ export default function FilteringBadge({ title, active, onClick }) {
     return (
         <button
             onClick={onClick}
-            className="rounded-xl border px-4 py-2 transition"
+            className="rounded-md border px-4 py-2 transition shadow-sm"
             style={{
                 background: active ? "var(--bgSecondary)" : "var(--bgPrimary)",
-                borderColor: "var(--textSecondary)",
+                borderColor: "var(--bgSecondary)",
                 color: "var(--textPrimary)",
             }}
         >

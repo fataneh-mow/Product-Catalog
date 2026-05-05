@@ -32,5 +32,16 @@
     "Furniture": "Furniture",
     "Groceries": "Groceries",
     "Home Decoration": "Home Decoration",
-    "Kitchen Accessories": "Kitchen Accessories"
+    "Kitchen Accessories": "Kitchen Accessories",
+    "ProductAdded": "Product Added",
+    "QuantityDecreased": "Quantity Decreased",
+    "QuantityIncreased": "Quantity Increased",
+    "CartCleared": "Cart Cleared",
+    "Cart_is_empty": "Cart is empty",
+    "Search": "Search...",
+    "ItemRemoved": "Item Removed",
+    "StartShopping": "Start Shopping",
+    "Loading": "Loading...",
+    "Category": "Category",
+    "Brand": "Brand"
 }

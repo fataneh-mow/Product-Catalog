@@ -9,6 +9,7 @@ import { FiSun, FiMoon } from "react-icons/fi";
 import i18n from "../i18n";
 import Dropdown from "./common/Dropdown";
 import { FiGlobe } from "react-icons/fi";
+import { useSelector } from "react-redux";
 
 export default function Header() {
     const { state, dispatch } = useTheme();
@@ -27,6 +28,11 @@ export default function Header() {
             isActive ? "opacity-100" : "opacity-70 hover:opacity-100"
         }`;
 
+    const cartItems = useSelector((state) => state.cart.items);
+    const totalItems = cartItems.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+    );
     return (
         <header
             style={{
@@ -34,19 +40,21 @@ export default function Header() {
                 color: "var(--textPrimary)",
                 borderBottom: "1px solid var(--bgSecondary)",
             }}
-            className="fixed w-full shadow-sm"
+            className="fixed w-full shadow-sm top-0 left-0 z-50 h-[70px]"
         >
             <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
                 
                 {/* hero section */}
                 <div className="flex items-center gap-1 justify-center cursor-pointer">
-                    <img src={hero} alt="hero-image" className="h-[6vh] w-auto hidden md:flex" />
+                    <img src={hero} alt="hero-image" className="h-[6vh] w-auto hidden md:flex"
+                        onClick={() => navigate("/")} 
+                    />
                     <div
                         style={{
                             color: "var(--textPrimary)",
                         }}
                         className="p-2 text-2xl rounded-xl flex items-center justify-center font-bold"
-                        onClick={() => navigate("/home")}
+                        onClick={() => navigate("/")}
                     >
                         {t("Melova")}
                     </div>
@@ -63,11 +71,28 @@ export default function Header() {
                         {t("Products")}
                     </NavLink>
 
-                    <NavLink
-                        to="/cart"
+                    <NavLink to="/cart" 
                         className={activeClass}
                     >
-                        <FiShoppingCart size={18} />
+                        <div className="relative flex items-center">
+                            <FiShoppingCart size={18} />
+
+                            {totalItems > 0 && (
+                                <span
+                                    className="absolute -top-2 -right-2 text-xs rounded-full px-1.5 py-0.5"
+                                    style={{
+                                        backgroundColor: "red",
+                                        color: "white",
+                                        fontSize: "10px",
+                                        minWidth: "18px",
+                                        textAlign: "center",
+                                    }}
+                                >
+                                    {totalItems}
+                                </span>
+                            )}
+                        </div>
+
                         {t("Cart")}
                     </NavLink>
 
