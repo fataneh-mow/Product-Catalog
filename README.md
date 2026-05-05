@@ -125,4 +125,4 @@ This project demonstrates understanding of:
 npm install
 npm run dev
 
-- Or you can use the live deplyed link: 
+- Or you can use the live deplyed link: **https://product-catalog-w4at.onrender.com/products**
