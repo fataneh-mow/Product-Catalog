@@ -23,7 +23,7 @@ export default function CategoryFilterBar() {
             {allCategories.map((cat) => (
                 <FilteringBadge
                     key={cat.value}
-                    title={cat.label}   // 🔥 IMPORTANT (not whole object)
+                    title={cat.label}
                     active={state.category === cat.value}
                     onClick={() =>
                         dispatch({

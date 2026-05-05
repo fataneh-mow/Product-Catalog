@@ -2,11 +2,26 @@ import { useTranslation } from "react-i18next";
 import { FaStar } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import { useProductUI } from "../context/ProductUIContext";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/cartSlice";
+import toast from "react-hot-toast";
 
 export default function ProductCard({ product, onAddToCart, view = "grid" }) {
     const { t } = useTranslation();
     const { state } = useProductUI();
     const isList = state.view === "list";
+    const dispatch = useDispatch();
+
+    const handleProductAddingToCart = () => {
+        try {
+            dispatch(addToCart(product))
+            toast.success(t("ProductAdded"))
+        } catch (error) {
+            console.log("Err: product not added to the cart:", error);
+            toast.error(t("ProductNotAddded"))
+        }
+    }
+
     return (
         <div
             style={{
@@ -76,7 +91,7 @@ export default function ProductCard({ product, onAddToCart, view = "grid" }) {
                     </span>
 
                     <button
-                        onClick={() => onAddToCart?.(product)}
+                        onClick={() => handleProductAddingToCart()}
                         style={{
                             backgroundColor: "var(--bgSecondary)",
                             color: "var(--textPrimary)",
