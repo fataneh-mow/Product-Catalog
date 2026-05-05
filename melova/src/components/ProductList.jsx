@@ -15,10 +15,12 @@ export default function ProductList ({products=[]}) {
     if (isLoading) return <p style={{color: "var(--textSecondary)"}} className="text-center my-12 text-xl">{t("Loading_products")}</p>;
     if (error) return <p style={{color: "var(--textSecondary)"}} className="text-center my-12 text-xl">{t("SomethingWentWrong")}</p>;
 
-    const filteredProducts = finalProducts.filter((p) =>
-        p.title.toLowerCase().includes(state.search.toLowerCase())
-    );
-    
+    const filteredProducts = finalProducts.filter((p) => {
+        const matchCategory =
+            state.category === "all" || p.category === state.category;
+
+        return matchCategory;
+    });
     return (
         <div className="my-12 md:mx-12 sm:mx-2 mx-4" >
             <div  

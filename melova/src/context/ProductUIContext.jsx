@@ -6,6 +6,7 @@ const initialState = {
     view: "grid",
     search: "",
     page: 1,
+    category: "all",
 };
 
 function reducer(state, action) {
@@ -18,6 +19,9 @@ function reducer(state, action) {
 
         case "SET_PAGE":
             return { ...state, page: action.payload };
+            
+        case "SET_CATEGORY":
+            return { ...state, category: action.payload };
 
         default:
             return state;
