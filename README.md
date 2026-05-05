@@ -126,3 +126,11 @@ npm install
 npm run dev
 
 - Or you can use the live deplyed link: **https://product-catalog-w4at.onrender.com/products**
+
+## Demo screenshots:
+<img width="1512" height="900" alt="Screenshot 2026-05-05 at 9 55 26 pm" src="https://github.com/user-attachments/assets/26062ee7-0f1f-4387-a71f-3e12cab0aa08" />
+<img width="1512" height="900" alt="Screenshot 2026-05-05 at 9 55 39 pm" src="https://github.com/user-attachments/assets/1a339dde-a06b-4fc0-b7e7-85f7a41b1b26" />
+<img width="1512" height="900" alt="Screenshot 2026-05-05 at 9 55 45 pm" src="https://github.com/user-attachments/assets/a88e68f4-87cc-432f-9007-105ac0d8d0be" />
+<img width="1512" height="900" alt="Screenshot 2026-05-05 at 9 55 52 pm" src="https://github.com/user-attachments/assets/b3969b7c-d159-4f47-b444-e41de8d58fad" />
+
+
